@@ -51,7 +51,9 @@ console.log('---  Stretch Goals  ---');
 // 7. Rewrite the `for` loop from #6 as a `for of` loop. 
 console.log('7. Showing supplyChanges with "for of" loop');
 for (let x of supplyChanges) { 
-    if (x>0) { //i got stuck on the identify of the x var in the for of loop; must look at an explanation, but it seems that x is set to the value of array index, and 'for of' carries out the index looping in the background without an identified variable?
+    if (x>0) {  //i got stuck on the identify of the x var in the for of loop; must look at an explanation, 
+                //but it seems that x is set to the value of array index, and 'for of' carries out the index 
+                //looping in the background without an identified variable?
         console.log(`added ${x} parts.`);
     } else if (x===0) {
         console.log('No change.');
@@ -64,6 +66,27 @@ for (let x of supplyChanges) {
 //    adding up all the numbers in the 'supplyChanges' array.
 console.log('8. Total supplies available is:');
 
+let totalSupplies = 0;
+
+//this for of loop method is simple, but I don't see a way to nest the console log inside the loop.
+//This doesn't matter for the assignment, and I'm not sure why it would matter in functional code, but i dislike the hanging console log.
+for (let x of supplyChanges) { 
+    totalSupplies +=x;
+}
+console.log(`Total supplies available is: ${totalSupplies}`); 
+
+
+//Here is an alternate method, using the traditional for loop syntax.
+//This method only logs the total supplies if the for loop is initiated in the first place.
+//Both methods initialize the totalSupplies var outside the loop. Fine.
+totalSupplies = 0;
+for (i=0; i<supplyChanges.length; i++) {
+    totalSupplies +=supplyChanges[i];
+    if(i===supplyChanges.length-1) {
+        console.log(`Total supplies available is: ${totalSupplies}`);
+    }
+}
+
 // 9. We have a large stash of parts in our warehouse that we 
 //    need to box up and get ready for shipment. 
 //    There are 572 parts in total, and each box holds 7 parts.
@@ -71,3 +94,11 @@ console.log('8. Total supplies available is:');
 //    no more boxes can be filled.
 //    Then log how many boxes were filled, and how many parts are left over.
 console.log('9. Filling boxes with a "while" loop');
+
+let partsToShip = 572;
+let boxes = 0;
+while (partsToShip > 7) {
+    partsToShip -=7;
+    boxes++;
+}
+console.log(`There are ${boxes} filled boxes and ${partsToShip} parts remaining.`);
