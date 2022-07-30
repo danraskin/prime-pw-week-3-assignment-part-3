@@ -51,9 +51,7 @@ console.log('---  Stretch Goals  ---');
 // 7. Rewrite the `for` loop from #6 as a `for of` loop. 
 console.log('7. Showing supplyChanges with "for of" loop');
 for (let x of supplyChanges) { 
-    if (x>0) {  //i got stuck on the identify of the x var in the for of loop; must look at an explanation, 
-                //but it seems that x is set to the value of array index, and 'for of' carries out the index 
-                //looping in the background without an identified variable?
+    if (x>0) {  
         console.log(`added ${x} parts.`);
     } else if (x===0) {
         console.log('No change.');
@@ -66,10 +64,11 @@ for (let x of supplyChanges) {
 //    adding up all the numbers in the 'supplyChanges' array.
 console.log('8. Total supplies available is:');
 
-let totalSupplies = 0;
 
 //this for of loop method is simple, but I don't see a way to nest the console log inside the loop.
 //This doesn't matter for the assignment, and I'm not sure why it would matter in functional code, but i dislike the hanging console log.
+//It also requires me to declare a variable outside the for loop. messiness on both ends, clean on the inside. the opposite of a sandwich.
+let totalSupplies = 0;
 for (let x of supplyChanges) { 
     totalSupplies +=x;
 }
@@ -78,12 +77,12 @@ console.log(`Total supplies available is: ${totalSupplies}`);
 
 //Here is an alternate method, using the traditional for loop syntax.
 //This method only logs the total supplies if the for loop is initiated in the first place.
-//Both methods initialize the totalSupplies var outside the loop. Fine.
-totalSupplies = 0;
-for (i=0; i<supplyChanges.length; i++) {
-    totalSupplies +=supplyChanges[i];
+//VERY pleased i realized i could declare *multiple* variables in the initialization. a real delightful-seeming sandwich situation.
+
+for (let i=0, totalSupp = 0; i<supplyChanges.length; i++) {
+    totalSupp +=supplyChanges[i];
     if(i===supplyChanges.length-1) {
-        console.log(`Total supplies available is: ${totalSupplies}`);
+        console.log(`For the LAST TIME! Total supplies available is: ${totalSupp}`);
     }
 }
 

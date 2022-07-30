@@ -1,1 +1,49 @@
 /* give your assignment a fun background color */
+/*fooling around with formatting here. I wanted to try a couple things:
+    1) set a background color (success) AND a background image with transparency. (success)
+    2) set background image so that it covered entire screen (partial success: covers screen but I don't quite understand how its working/what my alterative are)
+    3) play with text color. I like the effect of using HTML tag 'span' and CSS to set text background color.
+    I used a couple of random tutorials/resources I found from a google search, which exposed me to a bunch of formatting options and
+    some useful concepts (child elements inhereting properties from parent objects, psuedo-elements) and a bunch of things I haven't metabolized
+    (absolute v relative position).
+*/
+body {
+    background-color: darkorchid;
+    color:rgb(127, 251, 26);
+    font-weight:bolder;
+    font-size: 20px;
+
+}
+#wrapper {position: absolute; 
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+ }
+
+#wrapper::before {
+    content: "";
+        background-image: url("../5c08e8d1f26f7d01b89739f5b8eb4be8.jpg");
+        background-size: cover;
+        position: absolute;
+            top: 0px;
+            right: 0px;
+            bottom: 0px;
+            left: 0px;
+        opacity: 0.75;
+        margin: -5%;
+}
+
+ul {
+    position: relative;
+    padding: 0% 20% 0% 5%;
+}
+
+header {
+    padding: 0% 0% 0% 2%;
+    position: relative;
+
+}
+.highlight {
+    background-color:rgb(236, 136, 185,.50);
+}
